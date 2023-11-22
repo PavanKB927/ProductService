@@ -1,15 +1,15 @@
 package com.productservice.productservice.services;
 
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
+import com.productservice.productservice.dtos.GenericProductDto;
+
+import java.util.List;
 
 public interface ProductService {
-    String getProductById(Long id);
+    GenericProductDto getProductById(Long id);
 
-    void getAllProducts();
+    List<GenericProductDto> getAllProducts();
 
-    void deleteProductById(Long id);
-    void createProduct();
+    boolean deleteProductById(Long id);
+    GenericProductDto createProduct(GenericProductDto genericProductDto);
     void updateProduct();
 }

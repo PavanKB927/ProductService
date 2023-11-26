@@ -32,13 +32,9 @@ public class ProductController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> deleteProductById(@PathVariable("id") Long id){
-        try{
-            productService.deleteProductById(id);
-            return ResponseEntity.ok("Product Deleted");
-        }catch (Exception e){
-            return ResponseEntity.noContent().build();
-        }
+    public GenericProductDto deleteProductById(@PathVariable("id") Long id){
+        return productService.deleteProductById(id);
+
     }
 
     @PostMapping
@@ -46,5 +42,8 @@ public class ProductController {
         return productService.createProduct(genericProductDto);
     };
 
-    public void updateProduct(){};
+    @PutMapping("/{id}")
+    public GenericProductDto updateProduct(@PathVariable("id") Long id, @RequestBody GenericProductDto genericProductDto){
+        return productService.updateProduct(id, genericProductDto);
+    };
 }
